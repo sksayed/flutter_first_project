@@ -32,6 +32,14 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   @override
+  void dispose() {
+    print("login page is dispoed");
+    _authenticationBloc.close();
+    _loginBloc.close();
+    super.dispose();
+  }
+
+  @override
   Widget build(context) {
     return Scaffold(
       appBar: AppBar(
@@ -42,11 +50,5 @@ class _LoginPageState extends State<LoginPage> {
         authenticationBloc: _authenticationBloc,
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    _loginBloc.close();
-    super.dispose();
   }
 }

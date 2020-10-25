@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:meta/meta.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:async/async.dart';
 
 class UserRepository {
   static const String username = "username";
@@ -54,6 +55,17 @@ class UserRepository {
   Future<String> getUserName() async {
     var uname = await _storage.read(key: UserRepository.username);
     return uname;
+  }
+
+  Future<String> getPassword() async {
+    var pass = await _storage.read(key: UserRepository.password);
+    return pass;
+  }
+
+  Future<Map<String, String>> getUsernameAndPassWord() async {
+    var uname = await _storage.read(key: UserRepository.username);
+    var pass = await _storage.read(key: UserRepository.password);
+    return {UserRepository.username: uname, UserRepository.password: pass};
   }
 }
 

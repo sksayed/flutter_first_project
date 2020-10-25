@@ -37,4 +37,8 @@ class UserLableBloc extends Bloc<UserLableEvent, UserLableState> {
     authBlocSubscription.cancel();
     return super.close();
   }
+
+  Future<String> getPassword() {
+    return _userRepo.getPassword();
+  }
 }

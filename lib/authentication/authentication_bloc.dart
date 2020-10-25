@@ -13,8 +13,7 @@ class AuthenticationBloc
       : assert(userRepository != null),
         super(AuthenticationUninitialized());
 
-  @override
-  // TODO: implement initialState
+
   AuthenticationState get initialState => AuthenticationUninitialized();
 
   @override
@@ -40,9 +39,14 @@ class AuthenticationBloc
 
     if (event is LoggedOut) {
       //do when user is logged out
+      print("logged out called ");
       yield AuthenticationLoading();
       await userRepository.deleteToken();
       yield AuthenticationUnauthenticated();
     }
+  }
+
+  String getMyName() {
+    return "Sheikh Sayed";
   }
 }

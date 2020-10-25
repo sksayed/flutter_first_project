@@ -7,8 +7,8 @@ abstract class HomePageState extends Equatable {
 
 class HomePageInitial extends HomePageState {}
 
-class HomePageFirstButtonState extends HomePageState {}
+class HomePageDefaultState extends HomePageState {}
 
-class HomePageSecondButtonState extends HomePageState {}
+class HomePageModifiedButtonState extends HomePageState {}
 
-class HomePageThirdButtonState extends HomePageState {}
+class HomePageMoveToAnotherScreen extends HomePageState {}
