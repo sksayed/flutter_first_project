@@ -7,11 +7,8 @@ import 'package:ui_practice/ui/loginform.dart';
 import 'package:meta/meta.dart';
 
 class LoginPage extends StatefulWidget {
-  final UserRepository userRepository;
-
-  const LoginPage({Key key, @required this.userRepository})
-      : assert(userRepository != null),
-        super(key: key);
+  const LoginPage({Key key})
+      :super(key: key);
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -19,15 +16,14 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   LoginBloc _loginBloc;
-
   AuthenticationBloc _authenticationBloc;
-  UserRepository get userRepo => widget.userRepository;
-
+  UserRepository _userRepository ;
   @override
   void initState() {
+    _userRepository = RepositoryProvider.of<UserRepository>(context);
     _authenticationBloc = BlocProvider.of<AuthenticationBloc>(context);
     _loginBloc = LoginBloc(
-        userRepository: userRepo, authenticationBloc: _authenticationBloc);
+        userRepository: _userRepository, authenticationBloc: _authenticationBloc);
     super.initState();
   }
 

@@ -13,10 +13,7 @@ import 'package:ui_practice/user_lable/user_lable_event.dart';
 import 'package:ui_practice/user_lable/user_lable_state.dart';
 
 class HomePage extends StatefulWidget {
-  final UserRepository _userRepository;
-
-  HomePage(
-    this._userRepository, {
+  HomePage({
     Key key,
   }) : super(key: key);
 
@@ -30,13 +27,14 @@ class _HomePageState extends State<HomePage> {
   UserLableBloc userLableBloc;
   AuthenticationBloc _authenticationBloc;
   HomePageBloc _homePageBloc;
+  UserRepository _userRepository;
 
   @override
   void initState() {
-    // TODO: implement initState
+    _userRepository = RepositoryProvider.of<UserRepository>(context);
     _authenticationBloc = BlocProvider.of<AuthenticationBloc>(context);
     print(_authenticationBloc.getMyName());
-    userLableBloc = UserLableBloc(_authenticationBloc, widget._userRepository);
+    userLableBloc = UserLableBloc(_authenticationBloc, _userRepository);
     userLableBloc.add(UserLableAutheticatedEvent());
     _homePageBloc = HomePageBloc();
     _homePageBloc.add(HomePageInitialEvent());
@@ -72,7 +70,7 @@ class _HomePageState extends State<HomePage> {
               children: [
                 FutureBuilder(
                   initialData: null,
-                  future: widget._userRepository.getUsernameAndPassWord(),
+                  future: _userRepository.getUsernameAndPassWord(),
                   builder: (context, asyncData) {
                     if (asyncData.hasData) {
                       return createNavDrawerHeader(
