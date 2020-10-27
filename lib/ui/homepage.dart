@@ -6,6 +6,7 @@ import 'package:ui_practice/homepage/home_bloc.dart';
 import 'package:ui_practice/homepage/home_page_event.dart';
 import 'package:ui_practice/homepage/home_page_state.dart';
 import 'package:ui_practice/repository/user_repository.dart';
+import 'package:ui_practice/route/route_name.dart';
 import 'package:ui_practice/test_bloc/test_bloc.dart';
 import 'package:ui_practice/ui/default_home_page.dart';
 import 'package:ui_practice/user_lable/user_lable_bloc.dart';
@@ -141,6 +142,13 @@ class _HomePageState extends State<HomePage> {
                 ListTile(
                   title: Text("Move to Another Page"),
                   trailing: Icon(Icons.keyboard_arrow_right),
+                  onTap: () {
+                    //close the drawer
+                    Navigator.of(context).pop();
+                    //move to next page
+                    Navigator.pushNamed(context, RouteName.anotherpage,
+                        arguments: "this is from Home page");
+                  },
                 )
               ],
             ),

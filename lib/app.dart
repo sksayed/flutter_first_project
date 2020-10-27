@@ -4,6 +4,7 @@ import 'package:ui_practice/authentication/authentication_bloc.dart';
 import 'package:ui_practice/authentication/authentication_event.dart';
 import 'package:ui_practice/authentication/authentication_state.dart';
 import 'package:ui_practice/repository/user_repository.dart';
+import 'package:ui_practice/route/route_generator.dart';
 import 'package:ui_practice/ui/homepage.dart';
 import 'package:ui_practice/ui/loginpage.dart';
 import 'package:ui_practice/ui/splash_page.dart';
@@ -44,6 +45,7 @@ class _AppState extends State<App> {
         create: (context) => authenticationBloc,
         lazy: false,
         child: MaterialApp(
+          onGenerateRoute: RouteGenerator.generateRoute,
           home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
             builder: (context, AuthenticationState state) {
               if (state is AuthenticationUninitialized) {
