@@ -34,7 +34,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void dispose() {
     print("login page is dispoed");
-    _authenticationBloc.close();
     _loginBloc.close();
     super.dispose();
   }
