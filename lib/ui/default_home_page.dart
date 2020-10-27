@@ -20,9 +20,8 @@ class DefaultHomePage extends StatelessWidget {
               var c = BlocProvider.of<AuthenticationBloc>(context);
               print(c.toString() + " " + c.getMyName());
               //implement the logic
-              // BlocProvider.of<AuthenticationBloc>(context).add(LoggedOut());
-              BlocProvider.of<HomePageBloc>(context)
-                  .add(HomePageModifiedButtonPressedEvent());
+              BlocProvider.of<AuthenticationBloc>(context).add(LoggedOut());
+              //BlocProvider.of<HomePageBloc>(context).add(HomePageModifiedButtonPressedEvent());
               /*BlocProvider.of<HomePageBloc>(context)
                       .add(HomePageLogoutButtonClicked());
                   print(c.toString() + " " + c.getMyName());*/
